@@ -39,6 +39,7 @@ public class MainApp {
 
             if (choice == 1){ //Add Product
                 try {
+
                     System.out.print("Enter Product ID: ");
                     int id = key.nextInt();
                     key.nextLine();
@@ -52,8 +53,25 @@ public class MainApp {
                     System.out.print("Enter Product Quantity: ");
                     int qty = key.nextInt();
 
-                    Product p = new Product(id, name, price, qty);
-                    inventory.addProduct(p);
+                    System.out.print("Enter (1) if the Product has an expiry date, (2) if it does not: ");
+                    int expdCheck = key.nextInt();
+
+                    if (expdCheck == 1){ // Check if its perishable or not
+                        key.nextLine();
+                        System.out.print("Enter the expiry date (MMM/DD/YYYY): ");
+                        String expd = key.nextLine();
+
+                        PerishableProduct p = new PerishableProduct(id, name, price, qty, expd);
+                        inventory.addProduct(p);
+                    }
+                    else if (expdCheck == 2){
+                        Product p = new Product(id, name, price, qty);
+                        inventory.addProduct(p);
+                    }
+                    else{
+                        System.out.println("\nNot a valid input, please try again\n");
+                        continue;
+                    }
                 }
                 catch (Exception e){
                     System.out.println("Invalid input! Enter a input.");
