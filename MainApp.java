@@ -33,7 +33,7 @@ public class MainApp {
                 choice = key.nextInt();
             } catch (Exception e) {
                 System.out.println("Invalid input! Enter a number only.");
-                key.nextLine(); // clear buffer
+                key.nextLine();
                 continue;
             }
 
@@ -141,8 +141,13 @@ public class MainApp {
                 break;
             }
 
-            if (choice < 0 || choice > 6){
-                System.out.println("\n****Not a valid option****\n");
+            try {
+                if (choice < 1 || choice > 6) {
+                    throw new InvalidInputException("\n*****Invalid Option*****\n");
+                }
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+                continue;
             }
         }
     }
