@@ -7,6 +7,12 @@ public class InventoryManager {
     }
     
     public void addProduct(Product product){
+        for (int i = 0; i < index; i++){
+            if (products[i] != null && products[i].getProductId() == product.getProductId()){
+                System.out.println("\n***** Product with this ID already exists. Cannot add duplicate. *****\n");
+                return;
+            }
+        }
         if (index < products.length){
             products[index] = product;
             index++;
