@@ -17,13 +17,13 @@ public class InventoryManager {
     }
 
     public void veiwProducts() { 
-        System.out.println("\nInventory products\n-------------------------");
+        System.out.println("\nInventory products\n#########################");
         for (int i = 0; i < products.length; i++) { 
             if (products[i] != null) { 
                 products[i].displayProductInfo();
-                System.out.println("-------------------------");
+                System.out.println("#########################\n");
             } 
-        } 
+        }
     }
 
     public void updateProduct(int id, double new_price, int new_quantity) throws ProductNotFoundException{ 
